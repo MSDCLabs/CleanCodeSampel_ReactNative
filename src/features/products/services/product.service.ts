@@ -12,7 +12,6 @@ export const productService = {
     return response.data;
   },
 
-
   async getProductById(id: number): Promise<ProductsResponse> {
     const response = await apiClient.get<ProductsResponse>(`/products/${id}`);
     return response.data;

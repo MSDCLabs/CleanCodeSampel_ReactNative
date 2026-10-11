@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 import { Product } from '../types/product.types';
-import { productService } from '../services/productService';
+import { productService } from '../services/product.service';
 import { getErrorMessage } from '../../../utils/getErrorMessage';
 
 interface UseProductsResult {
