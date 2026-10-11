@@ -1,76 +1,37 @@
 import React from 'react';
-import {
-  Image,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import { Image, StyleSheet, Text, View } from 'react-native';
+import type { Product } from '../features/products/types/product.types';
+type Props = { product: Product };
 
-import { Product } from '../features/products/types/product.types';
-
-interface ProductCardProps {
-  product: Product;
-}
-
-export function ProductCard({ product }: ProductCardProps) {
+export function ProductCard({ product }: Props) {
   return (
-    <View style={styles.card}>
-      <Image
-        source={{ uri: product.thumbnail }}
-        style={styles.image}
-        resizeMode="cover"
-      />
-
-      <View style={styles.content}>
-        <Text style={styles.title} numberOfLines={1}>
-          {product.title}
-        </Text>
-
-        <Text style={styles.description} numberOfLines={2}>
-          {product.description}
-        </Text>
-
-        <Text style={styles.price}>
-          ${product.price.toFixed(2)}
-        </Text>
-      </View>
+  <View style={styles.card}>
+    <Image source={{ uri: product.thumbnail }} style={styles.image} />
+    <View style={styles.content}>
+      <Text style={styles.title}>{product.title}</Text>
+      <Text style={styles.description} numberOfLines={2}>{product.description}</Text>
+      <Text style={styles.price}>${product.price.toFixed(2)}</Text>
     </View>
+  </View>
   );
 }
-
 const styles = StyleSheet.create({
   card: {
     flexDirection: 'row',
     padding: 12,
-    marginBottom: 12,
-    backgroundColor: '#FFFFFF',
+    marginHorizontal: 12,
+    marginVertical: 6,
     borderRadius: 10,
+    backgroundColor: '#FFFFFF',
     elevation: 2,
   },
-  image: {
-    width: 90,
-    height: 90,
-    borderRadius: 8,
-  },
-  content: {
-    flex: 1,
-    marginLeft: 12,
-    justifyContent: 'center',
-  },
-  title: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    color: '#222222',
-  },
+  image: { width: 88, height: 88, borderRadius: 8, backgroundColor: '#EEEEEE' },
+  content: { flex: 1, marginLeft: 12, justifyContent: 'center' },
+  title: { fontSize: 16, fontWeight: '700', marginBottom: 4 },
   description: {
-    marginTop: 5,
     fontSize: 12,
     color: '#666666',
+    width:'72%'
   },
-  price: {
-    marginTop: 8,
-    fontSize: 16,
-    fontWeight: 'bold',
-    color: '#15803D',
-  },
+  price: { marginTop: 8, fontWeight: '700', color: '#15803D', },
 });
